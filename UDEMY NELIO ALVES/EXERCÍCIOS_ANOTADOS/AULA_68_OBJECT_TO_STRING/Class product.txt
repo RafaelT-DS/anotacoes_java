@@ -1,0 +1,33 @@
+package entities;
+
+public class Product {
+
+	public String name;
+	public double price;
+	public int quantity;
+	
+	public double totalValueInStock() {
+		return price * quantity;
+	}
+	
+	public void addProducts(int quantity) {
+		this.quantity += quantity; //quando se usa o this, está sendo explícito que quero usar o atributo da classe e não o parâmetro da função
+	}
+	
+	public void removeProducts(int quantity) {
+		this.quantity -= quantity;
+	}
+
+	public String toString(){ //como a classe product também é um object, estou sobrepondo a operação toString padrão que já vem lá no object, então aqui dentro posso implementar a minha versão do toString
+	return name
+		+ ", $ "
+		+ String.format("%.2f", price)
+		+ ", "
+		+ quantity
+		+ " units, Total: $ "
+		+ String.format("%.2f", totalValueInStock());
+	
+
+}
+
+}

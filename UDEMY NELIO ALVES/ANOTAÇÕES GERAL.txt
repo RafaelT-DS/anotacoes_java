@@ -1,0 +1,526 @@
+https://www.udemy.com/course/java-curso-completo/learn/lecture/10565952?start=0#overview
+
+Aula 4)
+
+- Algoritmo: Sequência finita de instruções para se resolver um problema.
+
+Aula 5) 
+
+- IDE: Software para editar e testar o programa.
+- Compilador: Software para transformar o código fonte em código objeto.
+- Gerador de código ou máquina virtual: software que permite que o programa seja executado.
+
+Aula 7) 
+
+- IDE: Ambiente Integrado de Desenvolvimento (é um conjunto de softwares utilizado para a construção de programas). Ex: Java: Eclipse, NetBeans.
+
+Aula 8)
+
+- Código fonte: é aquele escrito pelo programador em linguagem de programação. Porém esse código não é entendido pelo computador, ele precisa ser convertido em um código que possa ser executado. Esse código é chamado de código objeto.
+
+- Compilação: processo que transforma o código fonte em código objeto. Esse processo é feito por um software chamado compilador.
+
+- Interpretação: quando se tem um software chamado interpretador que vai ler o código fonte e vai realizar a análise léxica e sintática. Geração de código sob demanda, ou seja, gradualmente o interpretador vai lendo o código fonte, traduzindo ele para o código executável e o executando.  
+
+- Abordagem híbrida: código fonte passa por uma pré compilação que faz a análise léxica e sintática, gerando um código objeto que recebe o nome de bytecode, que é um código já pré compilado, porém, ao invés de passar por um gerador de códigos e ser gerado o código executável, esse bytecode vai ser executado por uma máquina virtual, que faz a interpretação desse bytecode e aí sim a geração de código sob demanda e a execução do programa. 
+
+A máquina virtual que executa o bytecode JAVA é chamada de JVM (Java Virutal Machine) 
+
+* Cenário -> na IDE Eclipe vai haver o código fonte do programa que vai estar dentro de uma pasta. Ao abrir essa pasta no Windows Explorer, haverá uma pasta chamada 'SRC' (ABREVIAÇÂO DE SOURCE). Dentro dela vai estar o código fonte do programa, que é o arquivo que estará aberto no eclipse. Porém o eclipse também criou uma subpasta chamada 'BIN' onde foi gravado o arquivo nome_do_arquivo.class que é o BYTECODE, ou seja, o código pré compilado a partir do código nome_do_arquivo.java. O arquivo nome_do_arquivo.class para ser executado precisa ser a partir da máquina virtual do JAVA. Dessa forma, quando um desenvolvedor for entregar um produto desenvolvido em JAVA, ele tem que entregar não só os arquivos pré-compilados, como também a máquina virtual do JAVA para que o programa possa ser executado. 
+
+VANTAGENS 
+
+- Compilação: Velocidade do programa (como todo o processo de compilação e geração de código é feito previamente, é natural que o programa fique mais rápido) e auxílio do compilador antes da execução (pois o compilador faz a análise léxica e sintática e não deixa que o programa seja executada caso haja algum erro nas análises. 
+
+- Interpretação: flexibilidade de manutenção do aplicativo em produção (se há um aplicativo que já está rodando na empresa e é necessário alterar alguma coisa nele, basta trocar um ou mais dos arquivos fontes e o programa continuará sendo executado normalmente), expressividade da linguagem (quando se consegue escrever uma solução elegante e complexa em poucas linhas), código fonte não precisa ser recompilado para ser rodado em plataformas diferentes.
+
+11)
+
+- LTS: long term support (suporte de longo período). São versões que possuem suporte do JAVA. 
+
+13) 
+
+- JVM: Java Virtual Machine (Máquina virtual do Java). Necessária para executar sistemas em Java. Usada pelos programadores para desenvolver aplicativos em Java. 
+
+- Compilação: Programa que transforma o código fonte que o programador escreveu em um código compilado que pode ser executado pelo computador. Quando a linguagem é compilada, o código fonte precisa passar por um compilador. O compilador junto com outras ferramentas que geram o arquivo executável, vai gerar o arquivo executável específico para a plataforma que se está utilizando. Ou seja, se eu compilar um código fonte em Windows e quiser executá-lo em Linux, será necessário de um outro compilador para traduzir o código para um executável para Linux e então o executável funcionará no Linux. O maior problema disso é justamente a portabilidade. Provavelmente será necessário fazer alguma alteração no código para que ele funcione perfeitamente no outro sistema operacional. As linguagens compiladas possuem a vantagem de serem muito rápidas pois o código roda em cima do próprio sistema operacional.  Esse tipo de linguagem é menos suscetíva à BUGS, pois o próprio compilador ajuda a verificar o código.
+
+- Interpretação (linguagens interpretadas): Utilitário que pega o código fonte e gradualmente o interpreta e o transforma em código executável.
+PHP é um exemplo de linguagem que é interpretada. O PHP distribui um interpretador para cada uma das plataformas de sistema operacional. Isso permite que o mesmo código, sem nenhuma alteração ,rode em sistemas operacionais diferentes. Como a análise do código e a geração do executável é feita na hora, esses programas tendem a ser mais lentos. 
+
+Pré-compiladas + máquina virtual:	 São pré-compiladas e depois o código gerado pela pré-compilação é executado em uma máquina virtual, que é o caso do JAVA e C#, por exemplo. O programa irá passar por um pré-compilador, que irá gerar o Bytecode, que é uma representação intermediária do código já compilado, já garantido que está correto do ponto de vista sintático e aí então será rodado em uma máquina virtual. 
+
+18) Criar um novo projeto -> File -> New -> Java Project -> Colocar um nome pro projeto -> FINISH -> Quando pedir pra criar um módulo, clicar em Não. -> Criar as classes -> Botão direito na pasta "scrc -> New -> Class 
+
+New Java Class -> Deixar o campo 'Package' em braco -> dar um nome pra classe no campo 'Name', colocar Main -> Marcar a opção 'public static void main...'(isso que irá permitir que a classe seja um programa executável).
+
+
+19) Java é uma programação orientada a objetos. Então todo código que a gente escreve precisa estar dentro de uma classe. 
+
+21) Operadores aritméticos:
+
+- Precedência: 1º lugar: * / %
+	       2º lugar: + -
+
+Quando a precedência é a mesma, é necessário resolver a expressão da esquerda para a direita. Ex: 2 * 6 / 3 = 4.
+
+Tudo que está em parênteses é feito em primeiro lugar. Ex: (3+2) * 4 = 20. 
+
+- MOD = RESTO (Simbolizado por um '%')Ex: 14 % 3 = 2.
+
+22) Variáveis e tipos básicos em JAVA.
+
+- Variável: Definição formal: porção de memória (RAM) utilizada para armazenar dados durante a execução dos programas. 
+
+%f = ponto flutuante
+%d = inteiro
+%s = texto
+%n = quebra de linha
+
+26) Entrada de dados: Quando o usuário informa dados para o programa.
+
+Scanner: Para fazer entrada de dados, é necessário criar um objeto do tipo "Scanner" da seguinte forma:
+
+Scanner sc = new Scanner(System.in);
+
+Para essa variável do tipo Scanner funcionar, é necessário colocar antes do código o comando import java.util.Scanner;
+
+Usar o comando sc.close() quando não precisar mais do objeto sc.
+
+Ex: Digitar uma palavra e essa palavra ficar armazenada em determinada variável. 
+
+String x;
+
+x = sc.next();
+
+- Para ler um número com ponto flutuante:
+
+Suponha uma variável tipo double declarada:
+
+double x;
+
+x = sc.nextDouble(); // Essa declaração pega a localidade do sistema, ou seja, se minha máquina estiver configurada em português do Brasil, o separador de decimais será a vírgula, então eu vou ter que digitar com vírgula. Para considerar o separador de decimais como ponto, ANTES da declaração Scanner, faça: Locale.setDefault(Locale.US);
+
+- Para ler um caractere:
+
+Suponha uma variável tipo char declarada:
+
+char x;
+
+x = sc.next().charAt(0); //charAt(0) só irá trazer a primeira letra da palavra que foi digitada.
+
+- Para ler vários dados na mesma linha separados por espaço:
+
+string x;
+int y;
+double;
+
+x = sc.next();
+y = sc.nextInt();
+z = sc.nextDouble();
+
+Aula 27)
+
+CRTL + SHIFT + F = Auto Indentação; 
+
+Ler um texto até a quebra de linha, ou seja, o que foi digitado só será armazenado em uma variável STRING após apertar a tecla ENTER: sc.nextLine();
+
+Se usar somente sc.next(); irá ler apenas a primeira palavra. Para ler a linha inteira, é necessário usar o sc.nextLine();
+
+Quando se usa um comando de leitura diferente do nextLine() e dá alguma quebra de linha, essa quebra de linha fica "pendente" na entrada padrão. Se foi feito então um nextLine(), aquela quebra de linha pendente será absorvida pelo nextLine().
+
+Solução: fazer um nextLine() extra antes de fazer o nextLine() de seu interesse.
+
+Aula 28)
+
+Algumas funções matemáticas:
+
+A = Math.sqrt(x); // Variável A recebe a raiz quadrada de x.
+A = Math.pow(x, y); // Variável A recebe o resultado de x elevado a y.
+A = Math.abs(x); // Variável A recebe o valor absoluto de x.
+
+Aula 30) 
+
+Exercício resolvido: https://www.youtube.com/watch?v=Ah1Y6d6deq0
+
+CTRL + SHIFT + O irá importar o Scanner automaticamente.
+
+Aula 34)
+
+OPERADORES LÓGICOS
+
+&& = E
+|| = OU
+! = NÃO
+
+Aula 38)
+
+a += b; | a = a + b;
+a -= b; | a = a - b;
+a *= b; | a = a * b;
+a /= b; | a = a / b;
+a %= b; | a = a % b;
+
+Aula 39)
+
+Quando se tem várias opções de fluxo a serem tratadas com base no valor de uma variável, ao invés de várias estruturas if-else encadeadas, alguns preferem utilizar a estrutura switch-case.
+
+Aula 40) 
+
+Expressão opcional ao if-else quando se deseja decidir um VALOR com base em uma condição.
+
+Sintaxe:
+
+( condição ) ? valor_se_verdadeiro :  valor_se_falso
+
+Ex:
+
+( 2 > 4 ) ? 50 : 80 | Resultado = 80
+
+Ex: 
+
+double preco = 34.5;
+double desconto;
+if (preco < 20.0) {
+	desconto = preco * 0.1;
+}
+else {
+	desconto = preco * 0.05;
+}
+
+Essa mesma expressão na condição ternária.
+
+double preco = 34.5;
+double desconto = (preco < 20.0) ? preco * 0.1 : preco * 0.05;
+
+Aula 41)
+
+Escopo de uma variável: é a região do programa onde a variável é válida, ou seja, onde ela pode ser referenciada.
+
+Uma variável não pode ser usada se não for iniciada.
+
+Aula 44)
+
+- Marcar uma linha de breakpoint; (executar o passo a passo a partir de um ponto específico).
+	Run -> Toggle Breakpoint.
+
+- Para iniciar o debug:
+	Botão direito na classe -> Debug as -> Java Application
+
+- Para executar uma linha:
+	F6
+
+Aula 45)
+
+SINTAXE
+
+while (condicao) {
+	comando 1
+	comando 2
+}
+
+Regra:
+
+V: executa e volta
+F: pula fora
+
+Aula 55)
+
+Estrutura repetitiva "faça-enquanto"
+
+Menos utilizada, mas em alguns casos se encaixa melhor ao problema.
+O bloco de comandos executa pelo menos uma vez, pois a condição é verificada no final.
+
+Sintaxe
+
+do { 
+	comando 1
+	comando 2		Regra: V: Volta / F: Pula fora
+} while (condicao);
+
+Primeiro vai ser executado o bloco de comandos, depois será feita a condição.
+
+Aula 57)
+
+Não pode começar com dígito: use uma letra ou _
+Não pode usar acentos ou til
+Não pode ter espaço em branco
+Sugestão: use nomes que tenham um significado
+
+Convenções:
+
+Camel Case: lastName
+
+- pacotes, atributos, métodos, variáveis e parâmetros.
+
+Quando mudar de palavra, sempre iniciar a proxima com letra maiúscula, para melhor entendimento, mas a primeira palavra iniciar com letra minúscula. Ex: int salarioDoFuncionario. 
+
+Pascal Case: ProductService
+
+- classes
+
+Aula 58)
+
+Operadores bitwise -> realizam operações lógicas bit a bit em valores.
+
+& = Operação "E" bit a bit
+| = Operação "OU-exclusivo" bit a bit
+^ = Operação "OU-exclusivo" bit a bit
+
+Tabelas comparativas:
+
+&:
+
+C1   C2     C1 e C2
+F      F	         F
+F      V           F
+V      F           F
+V      V          V
+
+|
+
+C1   C2     C1 e C2
+F      F	         F
+F      V           V
+V      F           V
+V      V          V
+
+^
+
+C1   C2     C1 XOR C2
+F      F	           F
+F      V             V
+V      F             V
+V      V             F
+
+Ex:
+
+89 = 0101 1001
+60 = 0011 1100 
+
+Ao pegar o primeiro número e realizar a operação & em relação ao segundo número, será atigindo o resultado: 0001 1000, pois é pego cada um dos bits dos dois números e comparados (primeiro bit do primeiro comparado ao primeiro bit do segundo, e assim por diante). Nesse caso, o primeiro bit do 60 é 0 (FALSO), o primeiro do 80 é 1 (VERDADEIRO). Com base na tabela de comparação da operação &, vemos que F + V = F, por isso o primeiro bit do resultado é 0, e fará esse mesmo procedimento com todos os bits de cada número.
+
+int n1 = 89;
+int n2 = 60;
+System.out.println(n1 & n2);
+System.out.println(n1 | n2);
+System.out.println(n1 ^ n2);
+
+É mais aplicado em programação de baixo nível, como microcontroladores, interface com redes, arduino, etc.
+
+Aula 59) 
+
+Formatar: toLowerCase(), toUpperCase(), trim()
+Recortar: substring(inicio), substring(inicio, fim)
+Substituir: Replace(char, char), Replace(string, string)
+Buscar: IndexOf, LastIndexOf
+str.Split(" ")
+
+Aula 61)
+
+Funções
+
+Representam um processamento que possui um significado
+
+- Math.sqrt(double) -> Raíz quadrada (ao invés de termos que colocar toda a lógica e cálculos para a realização de uma raíz quadrada, o compilador já dispõe dessa funcionalidade, do mesmo modo, é possível criar funções novas para que sejam reaproveitadas e assim deixar o nosso código mais enxuto)
+- System.out.println(string) -> Exibe a mensagem na tela
+
+Aula 65)
+
+Discussão
+
+Triângulo é uma entidade com três atributos: a, b, c.
+
+Estamos usando três variáveis distintas para representar cada triângulo:
+
+double aX, bX, cX, aY, bY, cY;
+
+Para melhorar isso, vamos usar uma CLASSE para representar um triângulo.
+
+Classe:
+
+É um tipo estruturado que pode conter (membros):
+
+Atributos (dados / campos)
+Métodos (funções / operações)
+
+A classe também pode prover muitos outros recursos, tais como:
+
+Construtores
+Sobrecarga
+Encapsulamento
+Herança
+Polimorfismo
+
+Ex:
+
+Entidades: Produto, Cliente, Triangulo
+Serviços: ProdutoService, ClienteService, EmailService, StorageService
+Controladores: ProdutoController, ClienteController
+Utilitários: Calculadora, Compactador
+Outros (views, repositórios, gerenciadores, etc.)
+
+package entities; // o nome do pacote está assim pois estamos definindo que o triângulo é uma entidade do nosso negócio
+
+public class Triangle { //dentro das chaves estão declarados os membros da classe
+
+	public double a;
+	public double b;
+	public double c;
+}
+
+Ao invés de:
+
+double aX, bX, cX, aY, bY, cY (conforme ex sem programação orientada a objetos)
+
+podemos fazer: 
+
+Triangle x, y; // agora haverá uma única variável x e uma y. Nesse caso, Triangle é um tipo, assim como double também é um tipo, só que agora é um tipo composto, porque ele tem três atributos (a, b e c)
+x = new Triangle(); //Instancia a classe
+y = new Triangle(); //Instancia a classe
+
+Na memória, ficará assim:
+
+x -> 3.0 (a) 4.0 (b) 5.0 (c) 
+// A variável X vai apontar para um objeto, que é composto por três atributos (a, b e c). O atributo a vai valer 3, o b vai valer 4 e o c vai valer 5. A mesma coisa acontece com o y.
+
+Quando a variável é do tipo classe, é necessário instânciá-la, se não o objeto não será criado. 
+
+Instanciação 
+
+double areaX, areaY, p;
+Triangle x, y;
+
+Quando é feita a declaração das variáveis, elas são criadas em uma área da memória chamada Stack, onde são criadas as variáveis estáticas. Durante a execução do programa, pode ser feita uma alocação dinâmica de memória.
+
+x = new Triangle(); // Vai ser criado um objeto do tipo Triangle, numa outra área de memória chamada heap, onde são criados os objetos dinâmicos.
+
+Aula 66)
+
+Com o uso da CLASSE, agora nós temos uma variável composta do tipo "Triangle" para representar um triângulo:
+
+Triangle x, y;
+x = new Triangle();
+y = new Triangle();
+
+Quais são os benefícios de se calcular a área de um triângulo por meio de um MÉTODO dentro da CLASSE Triangle?
+
+1) Reaproveitamento de código: nós eliminamos o código repetido (cálculo das áreas dos triângulos e x e y) no programa principal.
+
+2) Delegação de responsabilidades: quem deve ser o responsável por saber como calcular a área de um triângulo é o próprio triângulo. A lógica do cálculo da área não deve estar em outro lugar.
+
+Aula 67)
+
+Fazer um programa para ler os dados de um produto em estoque (nome, preço e quantidade no estoque). Em seguida:
+
+- Mostrar os dados do produto (nome, preço, quantidade no estoque, valor total no estoque)
+
+- Realizar uma entrada no estoque e mostrar novamente os dados do produto
+
+- Realizar uma saída no estoque e mostrar novamente os dados do produto
+
+Para resolver este problema, você deve criar uma CLASSE conforme projeto abaixo:
+
+Product
+
+- Name : string
+- Price : double
+- Quantity : int
+
++ TotalValueInStock() : double
++ AddProducts(quantity : int) : void
++ RemoveProducts(quantity : int) : void
+
+Aula 68)
+
+Toda classe em Java é uma subclasse da classe Object
+
+Object possui os seguintes métodos:
+
+- getClass - retorna o tipo do objeto
+- equals - compara se o objeto é igual a outro
+- hashCode - retorna um código hash do objeto
+- toString - converte o objeto para string
+
+Aula 71)
+
+MEMBROS ESTÁTICOS
+
+- Também chamados membros de classe. Em oposição a membros e instância.
+- São membros que fazem sentido independentemente de objetos. Não precisam de objeto para serem chamados. São chamados a partir do próprio nome da classe.
+- Aplicações comuns: 
+	- Classes utilitárias
+	- Declaração de constantes
+- Uma classe que possui somente membros estáticos pode ser uma estática também. Esta classe não poderá ser instanciada.
+
+Aula 76) 
+
+CONSTRUTOR
+
+- É uma operação especial da classe, que executa no momento da instanciação do objeto
+
+- Usos comuns:
+	- Iniciar valores dos atributos
+	- Permitir ou obrigar que o objeto receba dados / dependências no momento de sua instanciação (injeção de dependência)
+
+- Se um construtor customizado não for especificado, a classe disponibiliza o construtor padrão:
+	Product p = new Product ();
+
+- É possível especificar mais de um construtor na mesma classe (sobrecarga)
+
+Aula 87)
+
+Classes são tipos referência
+
+Variáveis cujo tipo são classes não devem ser entendidas como caixas, mas sim "tentáculos" (ponteiros) para caixas.
+
+Product p1, p2;
+
+Stack: Parte da memória que aloca as variáveis que são declaradas no programa. 
+
+Quando se faz:
+
+p1 = new Product ("TV", 900.00, 0);
+
+Nesse caso, vai ser alocado um objeto numa outra área de memória chamada Heap, que é uma área de memória onde são armazenados os objetos em tempo de execução (alocação dinâmica de memória).
+
+A variável p1 não vai guardar o produto em si, mas sim o endereço de memória correspondente ao endereço de memória onde estiver o objeto que foi alocado.
+
+p2 = p1; 
+
+Como essas variáveis são referências, p2 passa a apontar para onde o p1 aponta
+
+p2 = null; (não está apontando para ninguém)
+
+Aula 341)
+
+New Spring Starter Project -> Definir o nome do projeto -> group (pacote básico do projeto, geralmente o nome da empresa com o domínio invertido. EX:: com.educandoweb) -> artifact (mesmo nome do projeto) -> Next -> New Spring Start Project Dependences -> marcar "Spring Web Starter" -> Finish
+
+Aula 342)
+
+Resource -> recurso web correspondente a entidade user.
+
+Criar a classe User, segundo modelo de domínio do slide.
+
+CHECKLIST PARA CRIAR UMA ENTIDADE:
+
+- Atributos Básicos (são os atributos que estão no diagrama do modelo de domínio, no caso: name, email, phone, password)
+
+- Associatões (não se aplica na primeira vez)
+
+- Construtores: como se está usando um framework, é necessário usar um construtor vazio 
+
+- Getters e Setters (botão direiro -> source -> generate getters and setters -> selecionar os que você quer)
+
+- Hash code e equals (botão direiro -> source -> generate hash code and equals -> selecionar os que você quer)
+
+- Serializable (interface que você define nos objetos quando você quer que eles possam ser transformados em cadeias de bytes, para que seja possível trafegar com os objetos na rede, gravados em arquivos, etc)
+
+Para testar se o REST está funcionando, pode-se criar um recurso básico baseado na classe USER. Botão direito no pacote básico do projeto -> new -> class -> nome da classe UserResourse (ela irá disponibilizar um recurso web correspondente a entidade User) -> colocar um subpacote chamado resources (campo package -> inserir um ponto após o nome do pacote e colocar resources)
+
+
+
+
+
+
+
+

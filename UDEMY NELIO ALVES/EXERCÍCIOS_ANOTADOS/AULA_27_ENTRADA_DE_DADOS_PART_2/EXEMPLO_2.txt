@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class exercicios{
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int x;
+		String s1, s2, s3;
+		
+		x = sc.nextInt();
+		s1 = sc.nextLine();
+		s2 = sc.nextLine();
+		s3 = sc.nextLine();
+		
+		System.out.println("DADOS DIGITADOS:");
+		System.out.println(s1);
+		System.out.println(s2);
+		System.out.println(s3);
+	}
+
+}
+
+//Nesse caso, quando foi feito o sc.nextInt(); o sistema vai ler o primeiro número e após dar um ENTER ,que faz uma quebra de linha, e essa quebra de linha fica pendente na entrada padrão. Quando o sistema então for ler o s1 = sc.nextLine(); ele vai consumir a quebra de linha que ficou pendente na linha anterior, ou seja, a variável s1 ficaria com uma STRING vazia. 
+
+//Quando se usa um comando de leitura diferente do nextLine() e dá alguma quebra de linha, essa quebra de linha fica "pendente" na entrada padrão. Se foi feito então um nextLine(), aquela quebra de linha pendente será absorvida pelo nextLine().
+//Solução: fazer um nextLine() extra antes de fazer o nextLine() de seu interesse.
+
+		x = sc.nextInt();
+		sc.nextLine();
+		s1 = sc.nextLine();
+		s2 = sc.nextLine();
+		s3 = sc.nextLine();

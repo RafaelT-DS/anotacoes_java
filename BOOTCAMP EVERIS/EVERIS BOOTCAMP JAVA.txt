@@ -1,0 +1,284 @@
+git config --list -> mostra todas as configurações do meu GIT.
+git remote add origin https://github.com/RafaelT-DS/livro-receitas.git -> cadastrar o repositório remoto.
+git remote -v -> irá listar os repositórios remotos cadastrados.
+git status -> mostra se há alguma pendência, como falta de commit, por exemplo.
+
+- Resolvendo conflitos
+
+git pull origin master -> quando foi feita alguma alteração no servidor remoto.
+merge conflict -> quando há uma alteração na mesma linha tanto no local quando no remoto
+
+- CURSO SQL SERVER - CRIANDO SUAS PRIMEIRAS CONSULTAS
+
+Banco de dados:
+
+Relacionais -> Ex: SQL Server; Oracle; MySQL. São bancos que o sistema precisa de uma confiabilidade muito grande para os dados. Ex: Não se pode ter vendas duplicadas, controle de estoque, etc.
+
+NoSQL -> MongoDB ; Neo4j; Firebase. Melhor perfomance, armazenam grandes quantidades de dados, bigdata, melhores para armazenar vídeos, imagens, geolocalização, links. 
+
+Atomicidade -> Garantir que os dados estão corretos para inseri-los na tabela. Ex: vender um produto somente se tiver um cliente cadastrado ou realizar uma venda somente quando há produtos cadastrados, etc.
+
+Instalação SQL SERVER (é um serviço que fica rodando no sistema operacional).
+Instância -> Usa-se para integrar o banco de dados com algum software. Ex: Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
+SSMS -> Ambiente integrado para acessar, configurar, gerenciar, administrar e desenvolver todos os componentes do SQL SERVER.
+
+Criar um banco novo -> CREATE DATABASE NOME_DO_BANCO
+
+Especificar o banco que vai ser trabalhado -> USE NOME_DO_BANCO
+
+INT -> Números inteiros positivos ou negativos.
+
+VARCHAR -> Tamanho variável
+
+CHAR -> Tamanho fixo. Ex: char(10) e colocar apenas uma letra no campo, ex: 'a', irá adicionar 9 espaços a direita, pois o CHAR exige que os 9 espaços estejam preenchidos.
+
+FLOAT -> Aceita casas decimais.
+
+Selecionar a tabela na consulta SQL e apertar ALT+F1, irá mostrar os tipos das colunas, o tamanho, etc.
+
+Exemplo de INSERT -> insert into clientes (codigo, nome, TipoPessoa) values (1, 'Thiago', 'F');. É possível fazer o insert sem o INTO. É possível também realizar o insert sem os campos especificados que estão entre parênteses, ex: insert clientes values (1, 'Thiago', 'F');. Nesse caso, as colunas na tabela precisam estar exatamente nessa ordem, 1 - codigo, 2 - nome e 3 - TipoPessoa. *** O RECOMENDADO É SEMPRE INFORMAR AS COLUNAS, COMO NO PRIMEIRO EXEMPLO ***. 
+
+Exemplo de UPDATE -> update clientes set Codigo = 7, Nome = 'Jose' where TipoPessoa = 'J'
+
+Exemplo de DELETE -> delete from clientes where Codigo in (5,4,3)
+
+AND
+V AND F = V
+V AND F = F
+F AND V = F
+F AND F = F
+
+OR
+V OR V = V
+V OR F = V
+F OR V = V
+F OR F = F
+
+GETDATE -> é uma função SQL que retorna a data e hora do momento da inserção do dado.
+
+******************************************************
+
+Exemplo de CASE ->
+ 
+select *,
+	case 
+		when TipoPessoa = 'J' then 'Juridica'
+		when TipoPessoa = 'F' then 'Física'
+		else 'Pessoa indefinida'
+	end + (//esse mais serve tanto para somar valores quanto para concatenar diferentes tipos de strings//) convert(varchar, GETDATE (), 103)
+from clientes			
+
+******************************************************
+
+Exemplo de CONVERT -> select *, convert(varchar, DataSolicitacao, 103 (//esse 103 refere-se a formatação brasileira, ou seja, o formato de data e hora será exibido no formato brasileiro por causa desse 103//)
+		      from Pedido // irá conventer o campo data para varchar para ser exibido em um sistema, por exemplo.
+
+******************************************************
+
+CHAVE PRIMÁRIA -> Forma de se identificar um registro; tem que ser única para cada registro; gera uma melhor performance na busca pois irá indexar os registros de forma que quando você faça uma busca por ela, ela retorne de uma forma mais rápida. Ex: CPF.
+CHAVE ESTRANGEIRA -> Faz a relação de uma tabela com outra tabela. Sempre será uma cópia de uma chave primária, do mesmo tipo.
+
+alter table Clientes add constraint pk_cliente primary key (Codigo) // Alterando a tabela clientes para que o campo Codigo passe a ser a CHAVE PRIMÁRIA.
+*Após habilitar a opção de auto incremento, que faz com que a chave primária seja inserida sequencialmente, não se pode mais realizar um insert informando o código, ex: inset clientes values ('1', 'Julio', 'J', getdate ()); // O 1 não se pode mais colocar, pois a partir de agora quem irá definir os códigos dos próximos cadastros é o próprio SQL.
+
+alter table PedidoItem add constraint fk_pedido foreign key (CodigoPedido) references Pedido (Codigo) // alterando a tabela PedidoItem para que o campo CodigoPedido seja a chave estrangeira do campo Codigo da tabela Pedido.
+ 
+******************************************************
+
+AS FASES DE NORMALIZAÇÃO DE DADOS
+
+1 - Não pode haver um conjunto de colunas repetidos. Ex: duas colunas para mostrar que o cliente tem dois telefones, é melhor criar uma tabela chamada telefone, relacionando com a de cliente, assim um cliente poderia ter N telefones sem nenhum problema.
+
+2 - Não pode haver informações duplicadas que dependam da chave primária.
+
+Clientes - Pedido
+1	   N	-> Um cliente pode ter vários pedidos. (Relação de 1N). A tabela que possui o N (No caso pedido), carrega a chave da tabela que é 1 (Clientes)
+1	   1	-> Um pedido pode ter apenas um cliente.
+
+Pedido - PediItem
+1	 N -> Um pedido pode ter N itens.
+1 	 1 -> Um item só pode ter um pedido.
+
+Clientes - Produto
+1	 N -> Um cliente pode comprar vários produtos.
+N	 1 -> Um produto pode ter sido comprado por vários clientes.
+
+*** Nesse caso que há N dos dois lados da relação, é necessário criar uma tabela intermediária. 
+Clientes						Produtos
+Codigo			ClientesProdutos		Codigo
+			CodigoCliente
+			CodigoProduto
+
+******************************************************
+
+CRIANDO SEU PRIMEIRO REPOSISÓRIO NO GITHUB PARA COMPARTILHAR SEU PROGRESSO
+
+- Criar um novo repositório no github https://github.com/
+- Deixar o repositório como público.
+- Adicionar o README, pois ele irá criar um arquivo que é como se fosse a página inicial do repositório onde serão colocadas as considerações iniciais, eventuais anotações, links úteis, coisas relacionadas ao que representa o repositório em questão.
+- * Add. gitignone - pode-se colocar quando estamos trabalhando em um projeto em determinada tecnologia para que ele faça com que o git ignore alguns arquivos que não são necessariamente essenciais para versionar 
+- Criar um link no github -> [texto](link). Ex: [Sintaxe Básica Markdown](https://www.markdownguide.org/basic-syntax/)
+- Toda vez que for feita alguma alteração, é necessário clicar em Commit Changes 7:47
+- Para começar a mexer no repositório na máquina local, basta ir em 'code' e copiar o link dele.
+- Com o git instalado no computador, basta acessar a pasta local onde estarão os projetos, clicar com o botão direito e ir em GIT BASH HERE.
+- Digitar GIT CLONE e a url do repositório. Ex: GIT CLONE https://github.com/RafaelT-DS/dio-desafio-github-primeiro-repositorio.git
+- Digitar GIT STATUS para ver o que precisa ser enviado.
+- Digitar GIT ADD .
+- git commit -m "Inclusão das anotações do Bootcamp Java Everis"
+- git push origin main 
+- Após esses passos, o arquivo já estará no servidor remoto.
+******************************************************
+
+DOMINANDO IDEs JAVA
+
+Diferentes das linguagens de programação compiladas, (a compilaação do código se dá ainda em tempo de desenvolvimento) a linguagem Java é compilada para um bytecode que é interpretado por uma máquina virtual (JVM).
+
+A linguagem de programação Java é a linguagem convencional plataforma Java, mas não é a sua única linguagem.
+
+JAVA SE -> É a base da plataforma e trás algumas classes comuns entre as plataformas.
+JAVA EE -> Desenvolvimento WEB.
+JAVA ME -> Dispositivos móveis e embarcados, que servem para uma função só, como calculadoras, controles remotos, urnas eletrônicas, etc.
+
+Fases da execução Java
+
+1 - Escrevemos o seu código-fonte (arquivo com extensão .java)
+2 - Utilizamos o JDK para compilar o seu código-fonte e gerar o arquivo bytecode (arquivo com a extensão .class)
+3 - Para executar o seu programa, a JVM lê o arquivo compilado (.class) e as bibliotecas padrões do Java que estão no JRE.
+
+JDK -> Java Development Kit -> é o Kit de Desenvolvimento Java responsável por compilar código-fonte (.java) em bytecode (.class).
+JVM -> Java Virtual Machine -> é a Maquina Virtual do Java responsável por executar o bytecode (.class)
+JRE -> Java Runtime Environment -> Ambiente de execução do Java que fornece as bibliotecas padrões do Java para o JDK compilar o seu código e para a JVM executar o seu programa.
+
+Os lançamentos das versões OpenJDK LTS (suporte de longo prazo) acontecem pelo menos a cada quatro anos.
+
+IDE -> Ou ambiente de desenvolvimento integrado, é um software que combina ferramentas comuns de desenvolvimento em uma única interface gráfica do usuário (GUI), facilitando o desenvolvimento de aplicações.
+
+O Java possui um conjunto de ferramentas para se desenvolver programas baseados nele, que são conhecidos como Java Development Kit ou JDK, sendo este o ambiente voltado para os desenvolvedores.
+
+A JDK faz parte do funcionamento das IDE's - programas de desenvolvimento como IntelliJ, Eclipse, Netbeans, entre outros.
+
+ECLIPSE - é uma IDE para desenvolvimento JAVA, porém suporta várias outras linguagens. Ele foi feito em JAVA e segue o modelo open source de desenvolvimento de software.
+******************************************************
+
+ENVIAR UM PROJETO PRO GITHUB DIRETO DO ECLIPSE 
+
+- Clicar com o botão direito em cima do projeto -> Team -> Share Project -> Selecionar ou criar o repositório local e clicar em Finish -> Ir novamente em Team -> Commit 
+- Existe a opção de ir no modo/perspectiva GIT que fica no canto superior direito do eclipse -> Na aba GIT STAGING é possível verificar os arquivos que estão em modo UNSTAGED e ARRASTÁ-LOS para STAGED  -> Em Push Branch Master, iremos definir onde irá subir o repositório -> Colar o link do repositório no github e colar em URL.
+
+******************************************************
+
+DESENVOLVIMENTO BÁSICO EM JAVA
+
+Diferente de outras linguagens de programação, que são compiladas para código nativo, o Java é compilado para um bytecode que é interpretado por uma máquina virtual.
+
+COMPILADOR -> é um programa que , a partir de um código fonte, cria um programa semanticamente equivalente, porém escrito em outra linguagem, código objeto. Um compilador traduz um programa de uma lingagem textual para uma linguagem de máquima, específica para um processador e sistema operacional. O nome compilador é usado principalmente para os programas que traduzem o código fonte de uma linguagem de programação de alto nível para uma linguagem de programação de baixo nível (por exmplo, Assembly ou código de máquina).
+
+BYTECODE -> É o código originado da compilação de programas Java. É o programa interpretado e executado pela Máquina virtual Java, JVM.
+
+JVM -> É uma máquina virtual que executa programas Java, executando os bytecodes em linguagem de máquina para cada sistema operacional. Com o Java, compilamos para a JVM, o bytecode será executado pela máquina virtual, e não diretamente pelo SO, assim, o software escrito em Java possui portabilidade para qualquer sistema operacional, porém, cada JVM deve ser construída para um SO específico.
+
+JRE -> Java Runtime Environment, ou Ambiente de Execução do Java, é composto pela Java Virtual Machine (JVM), bibliotecas e APIs da linguagem Java e outros componentes para suporte da platafornma Java. Ele representa a parte responsável pela execução do software Java.
+
+JDK -> Java Developmente Kit (JDK), Kit de Desenvolvimento Java, é um conjunto de utilitários que permitem criar software para a plataforma Java. É composto pelo compilador Java, bibliotecas da linguagem, ferramentas e a JRE.
+
+JAVA SE -> Java Standart Edition, é a distribuição mínima da plataforma de desenvolvimentos de aplicações Java. OpenJDK é a implementação de referências opensource da Plataforma Java, Java SE, que ainda é mantida pela Oracle.
+
+JAVA EE -> Java Enterprise Edition, é uma extensão do Java SE que possui suporte a desenvolvimento de sistemas corporativos. Além do mínimo da plataforma, o Java EE possui diversas especificações de partes da infra estrutura de aplicações, como acesso a banco de dados, mensageria, serviços web, parser de arquivos e outras. Servidores de aplicações Java EE, sabem seguir essas especificações e implementar os recursos para os usuários.
+
+JAKARTE EE -> Com a falta de investimentos da Oracle no Java, ela cedeu todo o código, implementações e especificações do Java EE para o Eclipse Foundation, mas como o nome Java EE é uma marca registrada, foi escolhido o nome Jakarta EE. Agora a evolução das especificações e padrões do Java será feito sob o nome Jakarta EE, com compatibilidade com o Java EE.
+
+- Todo programa Java precisa ter uma class
+- Toda class precisa ter um nome
+- Por convenção, as classes começam sempre com a letra maiúscula e se for um nome composto, o outro nome também fica em maiúsculo
+
+Atributos -> 
+		public class SuperUsuario {
+	
+			private String login;
+			private String senha;
+			String nome; // 'login', 'senha' e 'nome' são características dessa classe SuperUsuario, ou seja, são atributos.
+
+			public SuperUsuario(final String login, final String senha){ // Essa classe tem construtores, o construtor da classe é um método particular que // leva o mesmo nome da classe e fala como que eu vou construir essa classe quando eu for instanciar um objeto dela. Nesse caso temos um construtor 'SuperUsuario', que // tem dois parâmetros 'login' e 'senha'.
+				this.login = login;
+				this.senha = senha;
+			}
+		
+			public String getLogin () 
+
+				{ return login; }
+			
+			protected String getSenha() 
+
+				{ return senha; }
+}
+
+
+******************************************************
+
+TIPOS PRIMITIVOS, WRAPPERS, NÃO PRIMITIVOS E TIPAGEM FORTE E ESTÁTICA
+
+PRIMITIVO -> nunca pode ser nulo. Possum valores default.
+
+BYTE -> -128 a 127 (8 bits). Números fora desse range não são aceitos pelo BYTE.
+CHAR -> Alfanumérico (16 bits). Apenas um caractere. Ex: A, 15, AA não é aceito.
+SHORT -> -32768 a 32767. Não é alfanumérico (16 bits).
+INT -> -2147483648 a 2147483647 (32 bits). Números inteiros.
+LONG -> -9223372036854775808L a 9223372036854775807L (64 bits). É necessário sempre colocar o L no final, para que o compilador saiba que é um LONG.
+
+
+WRAPPERS -> São objetos que representam os primitivos. Auto-boxing (quando passa o valor puro para um tipo de objeto) e Unboxing (quando se contrói o objeto só que que atibui a um tipo primitivo).
+NÃO PRIMITIVO -> STRING, NUMBER, OBJECT E QUAISQUER OUTROS OBJETOS.
+TIPAGEM ESTÁTICA -> O tipo da variável é verificado em tempo de compilação. Por exemplo: o compilador já avisa e não deixa executar o programa quando houver uma varíavel STRING recebendo um valor INT.
+TIPAGEM FORTE -> uma vez atribuído um tipo para uma variável, não é possível mais alterá-lo.
+INFERIDO -> É possível criar variáveis e atribuir tipos a elas sem ter que de forma explícita falar qual é o tipo dela, apenas usar a palavra reservada VAR. 
+MODIFICADORES DE ACESSO -> São responsáveis por habilitar ou não a visualização de um método, atributo, classe para outros programas.
+PUBLIC -> Pode ser acessada de qualquer lugar por qualquer entidade que possa visualizar a classe a que ela pertence.
+PRIVATE -> Os métodos e atributos da classe definidos como privados não podem ser acessados ou usados por nenhuma outra classe. Esses atributos e métodos também não podem ser visualizados pelas classes herdadas. 
+PROTECTED -> Torna o membro acessível às classes do mesmo pacote ou através de herança, seus membros herdados não são acessíveis a outras classes fora do pacote em que foram declarados.
+DEFAUL(PADRÃO) -> A classe e/ou seus membros são acessíveis somente por classes do mesmo pacote, na sua declaração não é definido nenhum tipo de modificador, sendo este identificado pelo compilador.
+ABSTRACT -> Esse modificado não é aplicado nas variáveis, apenas em classes e métodos. Uma classe abstrata não pode ser instanciada. Se houver alguma declaração de um método como abstract (abstrato), a classe também deve ser marcada como abstract.
+STATIC -> É usado para a criação de uma variável que poderá ser acessada por todas as instâncias de objetos desta classe como uma variável comum, ou seja, a variável criada será a mesma em todas as instâncias e quando seu contéudo é modificado numa das instâncias, a modificação ocorre em todas as demais. E nas declarações de métodos ajudam no acesso direto à classe, portanto não é necessário instanciar um objeto para acessar o método.
+FINAL -> Quando é aplicado na classe, não permite estender. Nos métodos impede que ele seja sobrescrito (overriding) na subclasse, e nos valores de variáveis não pode ser alterado depois que já tenha sido atribuído um valor.
+MÉTODOS ABSTRATOS -> Devem ser implementados por todos. Novos métodos quebram as implementações.
+MÉTODOS DEFAULT -> São herdados a todos que implementam. Novos métodos não quebram as implemenatações.
+ENUMS -> Basicamente são dicionários de dados imutáveis. Não é permitido criar novas instâncias. O construtor é sempre declarado como private. Por convenção, por serem objeots constantes e imutáveis (static final), os nomes são em maiúsculo.
+
+******************************************************
+
+STRING -> É uma sequência de caracteres. Está dentro do pacote java.lang. É uma forma de se escrever textos.
+CHARAT -> System.out.println("Char na posição: " + string.charAt(5)); -> Irá retornar o caractere que está na posição 5 do texto.
+LENGHT ->  System.out.println("Quantidade=" + string.lenght()); -> Irá trazer o tamanho da String.
+TRIM ->  System.out.println("Sem Trim [" + string + "]"); -> Tira os caracteres em branco da String. Nesse caso está com os espaços em branco.
+TRIM ->  System.out.println("Com Trim [" + string.trim() + "]"); -> Nesse caso está sem os caracteres em branco.
+TOLOWERCASE -> System.out.println("Lower " + string.toLowerCase()); -> Letra minúscila
+TOUPPERCASE -> System.out.println("Upper " + string.toUpperCase()); -> Letra maiúscula
+CONTAINS -> System.out.println("Contém M? " + string.contains("M")); -> Irá informar através de um TRUE ou FALSE se há na string a letra M, nesse caso.
+REPLACE -> System.out.println("Replace " + string.replace( charSequence: "n", charSequence: "$")); -> Irá trocar o N pelo $, nesse caso.
+EQUALS -> System.out.println("Equals? " + string.equals(" Minha String ")); -> Irá verificar se uma string é igual a outra e retornar através do TRUE ou FALSE.
+IGNORECASE -> System.out.println("Equals? " + string.equals(" Minha String ")); -> Irá ignorar se o texto está em maiúsculo ou minúsculo.
+SUBSTRING -> System.out.println("Substring(1,6)=" + string.substring( i:1, i1:6)); -> Irá trazer o texto que está entre os caracteres 1 e 6.
+STRINGFORMAT -> final var mensagem = String.format( s: "O cliente %s possui sobrenome %s ", nome, sobreNome); System.out.println(mensagem); -> Irá substituir %s pelo texto armazenado nas variáveis nome e sobreNome.
+MÓDULO -> Resto da divisão (usa-se %).
+
+******************************************************
+- Nomes de métodos são sempre em minúsculo. Se houver um nome composto, as outras palavras serão em maiúscula, mas a primeira palavra sempre em minúsculo. Não colocar também caracteres especiais.
+- Nomes de variáveis recomendado começar em minúsculo.
+
+******************************************************
+Vamos entender uma classe como um modelo a ser seguido.
+Uma classe vai funcionar como uma espécie de molde que nos servirá como base para construir algo.
+
+- A diferença entre um código procedural e um O.O é bem simples. Em código procedurais (...) escolher o melhor algoritmo é o mais importante (...) Já em linguagens orientadas a objetos (...) pensar no projeto de classes (...) como se encaixar (...) e como serão estendidas é o que mais importa.
+
+CLASSE -> Quando pensamos em construir uma casa, nós fazemos uma planta baixa. Ela será o modelo que utilizaremos para construir algo concreto. As classes funcionam de forma parecida. 
+
+MÉTODOS -> As ações que nós definimos que uma classe pode ter, nós chamamos de métodos.
+
+CONSTRUTORES -> Por meio de um construtor, criamos um objeto baseado em uma Classe e assim o alocamos em memória. Ao criarmos um objeto, dizemos que estamos instanciando um objeto. Quando não temos um construtor padrão (sem parâmetros) definidos em uma classe, é subentendido que temos um construtor desse tipo da classe. Isso só vale quando não tiver outro construtor definido. Também podemos criar construtores parametizados. Dessa forma, conseguimos definir um contrato onde sempre será obrigatório passar alguma informação na hora de instanciar a classe. Se tentarmos instanciar a classe sem passar algum parâmetro no construtor, tomaremos erro em tempo de compilação.
+
+GASBAR COLECTOR -> Responsável por destruir objetos quando eles não são mais usados. 
+
+ENCAPSULAMENTO -> Proteger algumas informação de alguma forma, ou seja, com uma cápsula. Garantir que o acesso a determinados dados estão realmente protegidos do acesso externo.
+
+HERANÇA -> Capacidade de uma Classe herdar o comportamento de outra.
+

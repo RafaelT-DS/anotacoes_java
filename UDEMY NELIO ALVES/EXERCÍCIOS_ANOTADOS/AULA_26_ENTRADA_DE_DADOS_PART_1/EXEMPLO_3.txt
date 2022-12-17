@@ -1,0 +1,21 @@
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		double x;
+		x = sc.nextDouble(); //Permite que eu digite um número double e ele seja armazenado na variável x
+		System.out.println("Você digitou: " + x);// o println pega localidade independente, então mesmo que eu digite um número com 
+		//vírgula, ele vai mostrar um número com ponto. Agora se eu quiser que fique com vírgula mesmo, é necessário usar 
+		//System.out.printf("Você digitou: %.2f%n", x);
+		
+		sc.close(); //Encerra o Scanner
+		
+	}
+
+}

@@ -1,0 +1,7 @@
+Representational State Transfer. 
+
+- Comunicação cliente servidor. Servidores possuem recursos. Cliente requerem recursos.
+
+- Stateless (sem estado). Servidor não deve guardar dados de conexões ativas de clientes.
+
+- JWT (Jason Web Token) - Número de identificação enviado do servidor pro cliente contendo os dados de autenticação, assim, o servidor não vai precisar mais criar dentro dele o arquivo de sessão e armazenamar um pra cada cliente, até mesmo porque se ele tiver muitos clientes, o servidor pode acabar ficando lento e pesado.

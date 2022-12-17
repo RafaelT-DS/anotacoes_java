@@ -1,0 +1,22 @@
+package entities;
+
+public class Triangle {
+	
+	public double a;
+	public double b;
+	public double c;
+
+	public double area () {/* public indica que essa função poderá
+		ser usada em outro arquivo. Pode-se
+		colocar dentro dos parênteses os parâmetros que essa
+		função recebe pra fazer o que ela precisa fazer. No caso
+		de calcular a área de um triângulo, essa função precisa
+		receber algum dado além dos dados que já estão contidos
+		na classe? (a, b e c)não, pois para calcular a área, precisa-se
+		do a, b e c que já estão na classe, então por isso que nesse caso os 
+		parênteses estão vazios.*/
+		
+		double p = (a + b + c) / 2.0;
+		return Math.sqrt(p * (p - a) * (p - b) * (p - c));
+	}
+}

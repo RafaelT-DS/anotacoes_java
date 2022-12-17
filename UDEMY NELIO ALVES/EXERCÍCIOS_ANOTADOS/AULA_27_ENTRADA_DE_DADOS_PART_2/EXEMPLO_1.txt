@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class exercicios{
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		String s1, s2, s3;
+		
+		s1 = sc.nextLine();
+		s2 = sc.nextLine();
+		s3 = sc.nextLine();
+		
+		System.out.println("DADOS DIGITADOS:");
+		System.out.println(s1);
+		System.out.println(s2);
+		System.out.println(s3);
+	}
+
+}
+
+//Ler um texto até a quebra de linha, ou seja, o que foi digitado só será armazenado em uma variável STRING após apertar a tecla ENTER: sc.nextLine();
+//Se usar somente sc.next(); irá ler apenas a primeira palavra. Para ler a linha inteira, é necessário usar o sc.nextLine();

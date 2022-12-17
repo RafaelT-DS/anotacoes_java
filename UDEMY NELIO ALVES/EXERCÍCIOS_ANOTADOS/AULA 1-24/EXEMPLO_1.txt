@@ -1,0 +1,21 @@
+import java.util.Locale; // para funcionar o Locale abaixo, é necessário importar por meio desse comando
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		double x = 10.35784;
+		String nome = "Maria";
+		int idade = 31;
+		double renda = 4000.0;
+		
+		Locale.setDefault(Locale.US);   // <- esse comando é o que muda a configuração para o separador dos EUA.		
+		System.out.println("Resultado = " + x + " metros"); //Concatenar vários elementos em um mesmo comando de escrita		
+		System.out.printf("Resultado = %.2f metros %n", x); //Concatenando usando o PRINTF. O valor de X vai entrar no lugar do %.2f
+		System.out.printf("%s tem %d anos e ganha R$ %.2f reais%n", nome, idade, renda); //As letras após o % são marcadores para ent
+//rar os valores das variáveis. Ponto flutuante = %f; %d = inteiro; %s = texto; %n = quebra de linha. Depois é só colocar as variávei
+//s na ordem que irão aparecer.
+	}
+									
+
+}

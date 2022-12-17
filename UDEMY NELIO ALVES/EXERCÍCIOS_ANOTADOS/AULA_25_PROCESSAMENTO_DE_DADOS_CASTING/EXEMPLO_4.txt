@@ -1,0 +1,18 @@
+
+public class teste_processamento {
+
+	public static void main(String[] args) {
+		
+	double a;
+	int b;
+	
+	a = 5.0;
+	b = (int) a; // Se realmente desejar atribuir o valor da variável 'a' que é DOUBLE para a 'b' que é inteira, não se importando com a
+	// possível perda de informação é só fazer o CASTING colocando o int entre parenteses como está agora. Nesse caso, estou dizendo ao
+	// compilador que importa as casas decimais.
+	
+	System.out.println(b);
+		
+	}
+
+}

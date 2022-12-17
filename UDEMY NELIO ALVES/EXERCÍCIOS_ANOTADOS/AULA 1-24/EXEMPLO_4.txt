@@ -1,0 +1,21 @@
+import java.util.Locale; // para funcionar o Locale abaixo, é necessário importar por meio desse comando
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		double x = 10.35784;
+		
+		System.out.printf("%.2f%n", x); //estou especificando por meio a letra F que quero separar o número por duas casas decimais
+						//o %n ou \n é a quebra de linha nesse caso, como se fosse o ln no system.out...
+						//o printf pega por padrão o formato do computador que se está usando, ou seja, meu computa
+						//dor está no idioma português do Brasil, então ele vai pegar o separador de decimais da lín
+						//gua portuguesa, que é a vírgula. Para que seja ponto (.), por exemplo, é necessário configu
+						//rar o sistema para que pegue o separador dos EUA, que é ponto. 
+		Locale.setDefault(Locale.US);   // <- esse comando é o que muda a configuração para o separador dos EUA.
+		System.out.printf("%.4f%n", x); //só vai pegar a nova formatação se estiver após o Locale
+		
+	}
+									
+
+}

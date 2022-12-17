@@ -1,0 +1,87 @@
+PARADIGMA PROCEDURAL - era utilizado como prática de programação antes da introdução das linguagens orientadas a objetos.
+
+A ideia central do paradigma da orientação a objetos é criar unidades de código que combinem os dados associados a determinada informação com as funcionalidades aplicadas aqueles dados (por exemplo, CPF + validação). São os atributos e métodos.
+
+Exemplo: Conta Bancária
+
+O que tem numa conta? Saldo, agência, número, titutal (esses são os dados ou atributos)
+
+CLASS é a palavra chave no JAVA que define um tipo, ou algo assim. Ex: Saldo, agencia, numero, titural, tudo isso é uma especificação do tipo conta (bancária).
+
+Ex de uma class no chave:
+
+class Conta{
+	double saldo;
+	int agencia;
+	int numero;
+	String titular;
+}
+
+Pra criar uma execução de um programa no JAVA, precisa ter o ponto de entrada (public static void main...).
+
+Uma CLASSE é uma especificação de um tipo, definindo atributos e comportamentos
+
+Um OBJETO é uma instância de uma classe onde podemos definir valores para seus atributos
+
+Para criar uma instância precisamos usar a palavra new.
+
+Mas ela também tem comportamentos (o que ela pode fazer, o que eu posso pedir pra ela?) ex: Sacar algum valor, depositar, fechar conta, transferir, etc).
+
+MÉTODO: Comportamentos. O que se pode fazer com uma conta, ex: depositar, transferir, etc.
+
+Um método define o comportamento ou a maneira de fazer algo.
+
+Um método precisa definiar a saída. Se não tiver um valor de retorno, basta escrever apenas o nome do método.
+
+É possível que um método não possua nenhum parâmetro.
+
+Por convenção, o nome do método no mundo Java deve começar com a letra minúscula.
+
+- Classe Conta.java
+
+Ex: public void deposita(double valor){
+        this.saldo = this.saldo + valor;
+
+- O Uso do this é opcional, mas recomendamos o seu uso, principalmente para o iniciante na linguagem JAVA.
+- O this é uma referência, ou seja, aponta para um objeto.
+- O this é uma palavra chave igual á void, class, new, int e varias outras.
+- Valor 50 que é o que está na classe TestaMetodo. Esse saldo é da conta a qual está sendo invocado esse método
+- Criação do método. Em java é obrigatório retornar alguma informação ao depositar (nesse caso), quando não se retorna nada, basta inserir void, conforme exemplo.
+- This é uma referência ao objeto da classe TestaMetodo, contaDoPaulo
+
+Classe TestaMetodo.java
+
+Public class TestaMetodo {
+	public static void main(String[] args) {
+	Conta contaDoPaulo = new Conta()
+	contaDoPaulo.saldo = 100;
+	contaDoPaulo.deposita(50)
+	System.out.println(contaDoPaulo.saldo);
+}
+}
+
+- É comum dar o nome da variável igual ao nome da classe, só que com letra minúscula. O da esquerda precisa ser o nome da classe.
+- Quando for invocar um método, é obrigatório o uso de parênteses. Essa invocação de método executa o trecho de código que está na classe Conta (public void deposita (double valor).
+
+ATALHO: CTRL + Mouse em cima dos métodos, ao clicar ele vai direto pro método. 
+
+EXERCÍCIO:
+
+void deposita (double valor, int numero){
+}
+
+Correto, definimos o retorno (nesse caso void), definimos o nome do método (nesse caso deposita) e definimos corretamente os parâmetros (nesse caso, dois, double valor e int numero).
+
+ctrl + alt + l (IDENTAÇÃO)
+
+ATRIBUTO PRIVADO. Ex: private double saldo;. Quer dizer que ele não poder ser lido e modificado por ninguém, a não ser pela própria classe.
+
+Um construtor pode receber parâmetros.
+
+Construtores são utilizados para inicialização dos atributos.
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+public class teste_processamento {
+
+	public static void main(String[] args) {
+		
+		int a, b;
+		double resultado;
+		
+		a = 5;
+		b = 2;
+		
+		resultado = (double) a / b; //esse double em parênteses é um CASTING (conversão explícita dos valores), ou seja, eu declarei 
+		// as variáveis em int, mas se deixasse desse jeito, o resultado não saíria quebrado, mas sim inteiro. Realizando então o 
+		//CASTING, o resultado sairá quebrado, em DOUBLE, ou seja, 2,5 que é o resultado da divisão.
+		
+		System.out.println(resultado);
+		
+	}
+
+}

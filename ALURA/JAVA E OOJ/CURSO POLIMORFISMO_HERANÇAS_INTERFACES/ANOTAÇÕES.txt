@@ -1,0 +1,28 @@
+- Construtor padrão é aquele que não tem nenhum parâmetro. É chamado na inicialização/criação do objeto.
+
+Protected: Está entre o privare e o public. 
+
+A palavra chave com a menor visibilidade é private, depois vem o protected e depois public.
+
+private - apenas visível dentro da classe
+
+protected - visível dentro da classe e também para as filhas
+
+public - visível em todo lugar
+
+Repare também que protected é relacionado com a herança.
+
+Pode-se chamar qualquer método da classe mãe. Uma classe pode ter diversas "filhas e netas" (que herdam umas das outras) mas não podemos escolher o que será herdado.
+
+Nessa aula já entramos mais a fundo na herança. Aprendemos:
+
+que classe mãe é chamada de super ou base class
+que a classe filha também é chamada de sub class
+como aumentar a visibilidade de um membro (atributo, método) através do protected
+como acessar ou chamar um membro (atributo, método) através do super
+como redefinir um método através da sobrescrita
+
+Polimorfismo -> Objeto que pode ser referenciado por uma referência de mesmo tipo ou mais genérica.
+
+
+

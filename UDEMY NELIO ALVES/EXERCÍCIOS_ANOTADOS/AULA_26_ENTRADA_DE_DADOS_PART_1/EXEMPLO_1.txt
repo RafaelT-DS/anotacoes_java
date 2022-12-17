@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		String x;
+		x = sc.next(); //Permite que eu digite uma palavra e ela seja armazenada na variável x
+		System.out.println("Você digitou: " + x);
+		
+		sc.close(); //Encerra o Scanner
+		
+	}
+
+}

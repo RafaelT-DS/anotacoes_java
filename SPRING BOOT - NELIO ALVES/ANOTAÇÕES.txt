@@ -1,0 +1,32 @@
+https://www.youtube.com/watch?v=D4frmIHAxEY&ab_channel=DevSuperior
+
+https://github.com/devsuperior/java-web-spring-2022
+
+
+
+MAVEN - Gerenciado de dependências. Baixa da internet todas as bibliotecas e dependências que o aplicativo vai precisar.
+
+Pode-se criar um novo projeto via web no Spring Initializz (só pesquisar no google).
+
+- Group: Domínio da instituição ao contrário. EX: com.devsuperior
+
+- Artifact: userdept
+
+ADD DEPENDENCES -> Spring Web; Spring DATA JPA; H2 DATABASE 
+
+CLICAR EM GENERATE -> Será gerado um arquivo ZIP; descompactar na sua pasta workspace -> Importar o projeto no STS -> IMPORT -> MAVEN -> EXISTING MAVEN PROJECTS -> Selecionar a pasta do projeto -> FINALIZAR
+
+Na aba Boot Dashboard, clicar com o botão direito em cima do projeto -> RE(START)
+
+- src/main/java -> clicar com o botão direito no projeto -> new Class -> Definir um nome -> Em package, colocar .entities na frente do nome, pois serão as entidades do modelo de domínio. -> Finish
+
+private - padrão pra criação de entidade.
+
+Após colocar o @Entity e o @Table, apertar CRTL + SHIFT + O para importar eles e escolher javax.persistence.Entity e o .Table
+
+Após fazer o mapeamento objeto-relacional, é necessário configurar o banco de dados H2. 
+
+-> pasta src/main/resources -> duplo clique application.properties e colocar as configurações -> dar um RESTART no projeto. 
+
+
+

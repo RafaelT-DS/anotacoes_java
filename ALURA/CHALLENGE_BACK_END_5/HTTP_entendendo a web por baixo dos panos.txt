@@ -1,0 +1,123 @@
+O HTTP foi feito para estabelecer regras de comunicação entre o modelo Cliente-Servidor que funciona na Web.
+
+O modelo Cliente-Servidor tenta centralizar o trabalho no servidor, mas isso também pode gerar gargalos. Se cada Cliente pudesse ajudar no trabalho, ou seja, assumir um pouco da responsabilidade do servidor, seria muito mais rápido. Essa é a ideia do P2P! Não há mais uma clara divisão entre Cliente-Servidor, cada cliente também é servidor e vice-versa!
+
+HTTPS(HTTP + SSL/TLS) - Mais seguro que o HTTP. Ao invés de enviar textos puros, passa a enviar dados criptografados.
+
+Quando precisamos informar nossos dados a algum servidor, queremos ter certeza que este servidor realmente representa a entidade em questão. Queremos confiar em quem estamos fornecendo nossos dados!
+
+Um certificado digital prova uma identidade para um site, onde temos informações sobre o seu domínio e a data de expiração desse certificado.
+
+Além disso, o certificado ainda guarda a chave pública que é utilizada para criptografar (cifrar) os dados que são trafegados entre cliente e servidor.
+
+A chave privada é utilizada para descriptografar os dados que foram criptografados com a chave pública, por isso ela é importante e deve ficar apenas em posse do servidor.
+
+Uma autoridade certificadora (CA - Certificate Authority) é um órgão que garante ao navegador e ao usuário que a identidade de um servidor (por exemplo o servidor da Alura) é realmente válida. Portanto, podemos trocar informações com este sem riscos!
+
+O HTTP usa sessões para salvar informações do usuário
+
+Sessões só são possíveis por uso de Cookies
+
+Cookies são pequenos arquivos que guardam informações no navegador
+
+O HTTP é stateless, não mantem estado.
+
+- Status 404: Busca por informação inválida, que não existe.
+
+- Status 500: Internal Server Error.
+
+- Status 300: Moved Permanently.
+
+- Status 200: OK
+
+- 2xx - Respostas de sucesso
+
+- 3xx - Mensagens de redirecionamentos.
+
+- 4xx - Erros causados pela requisição do cliente
+
+- 5xx - Erros causados pelo servidor.
+
+A tabela completa de mensagens HTTP pode ser vista em: 
+
+https://www.w3schools.com/tags/ref_httpmessages.asp
+
+Você pode conferir uma documentação mais completa e detalhada neste link: https://httpstatuses.com/
+
+Quando enviamos parâmetros na URL, devemos iniciar pelo ?, o nome do parâmetro e um =, para separar o nome do parâmetro do seu valor:
+
+?nome_do_parametro=seu_valor
+
+Quando usamos mais do que um parâmetro devemos usar & para separá-los:
+
+?nome_do_parametro=seu_valor&nome_do_outro_param=valor
+
+GET é normalmente usado para pesquisas, mas isso depende um pouco de como a plataforma e o desenvolvedor usam esse método. Na vida real, vocês vão encontrar muitos exemplos que usam requisições do tipo GET, não só para pesquisas.
+
+O protocolo HTTP define que o GET deve ser utilizado apenas para acessar os dados, mas HTTP, como protocolo, não pode impedir o desenvolvedor de fazer algo diferente. Por exemplo, veja a requisição a seguir:
+
+GET /vendas/remove?id=53 HTTP/1.1
+HOST: www.vendasfuturas.com.br
+
+Usamos GET, mas repare que o nome do recurso muda a intenção do método HTTP. O recurso se chama /vendas/remove, ou seja, queremos apagar a venda com a identificação 53, usando o método GET!
+
+O protocolo HTTP define apenas algumas regras entre cliente e servidor. O que o servidor realmente faz depende da implementação
+
+Um Web Service disponibiliza uma funcionalidade na web, através do protocolo HTTP. As funcionalidades variam muito e dependem muito da empresa e do negócio dela, mas por exemplo, na Alura temos um Web Service que traz todas as informações de um curso (nome, capítulos, exercícios, etc). O Google ou Facebook possuem muitos Web Services para acessar um usuário, ver os posts dele, interesses, etc. Muitas vezes esses serviços são pagos.
+
+O importante é que sempre usamos o protocolo HTTP. A grande diferença de um Web Service é que os dados não vem no formato HTML, e sim em algum formato independente da visualização, como XML ou JSON.
+
+É a tarefa do cliente ler os dados e apresentar para o usuário final. O cliente não precisa ser o navegador (e normalmente não é), pode ser um celular ou uma aplicação Desktop.
+
+- METHODS (AÇÕES) HTTP
+
+GET - Receber dados (parâmetros enviados na URL que não são sigilosos)
+
+POST - Submeter, enviar dados (parâmetros no corpo da requisição)
+
+Esses dois acima são os mais usados.
+
+DELETE - Remover um recurso
+
+PUT - Atualizar um recurso
+
+URL: Ex: https://www.youtube.com/results?search_query=ayrton+senna
+
+results -> Recurso
+
+? -> Existem parâmetros...
+
+search_query=ayrton+senna -> Parâmetro implementado pelo youtube
+
+& -> Concatenação de parâmetros
+
+- SERVIÇOS WEB - REST
+
+- ACCEPT -> Através dele podemos usar algum formato específico como: Accept: text/html, Accept: text/css, Accept: application/xml, Accept: application/json, Accept:image/jpeg e Accept: image/*
+
+REST -> REpresentational State Transfer. 
+
+O padrão REST
+Logo podemos perceber que o padrão usado pela equipe do webservice define que uma requisição web tem três tipos de componentes importantes: recursos (URI), operações (GET, POST, PUT, DELETE/...) e representação de dados(XML, JSON, ...).
+
+Esses três componentes em conjuntos seguindo algumas práticas são a base para o modelo arquitetural REST(Representational State Transfer) ou em português Transferência de Estado Representacional.
+
+A tecnologia HPACK é especialista em comprimir os Headers da requisições/respostas HTTP, deixando as mais leves.
+
+O HPACK é uma tecnologia especializada em comprimir os Headers das comunicações HTTP/2. Como toda requisição HTTP acompanha algum header por padrão, uma tecnologia de compressão embutida no protocolo é demasiadamente útil para economizar dados trafegados.
+
+- Gzip vem nativamente no protocolo HTTP/2.
+
+- HTTP/2 reforça bastante o uso do HTTPS, ao contrário do HTTP/1.1 em que isto era opcional. Apesar de não ser obrigatório em sua especificação, os browsers não suportam o HTTP/2 sem HTTPS, o que acaba fazendo com que o seu uso seja exclusivo em modo criptografado.
+
+- Uma das principais mudanças é que agora no HTTP/2 os dados são trafegados em binário e não mais em texto puro.
+
+- Headers Stateful permitem que apenas os cabeçalhos que mudem sejam enviados a cada requisição, economizando muita banda que seriam cabeçalhos repetidos
+
+- Server Push no HTTP/2: O servidor pode empurrar para o clientes certos recursos antes mesmo de serem solicitados, pois ele consegue analisar o HTML e ver o que mais é preciso para carregar a página fazendo com que não seja necessário gastar tempo pedindo todos os outros recursos.
+
+O Keep-Alive continua existindo no HTTP2, só que ele trouxe uma novidade. Por exemplo, se temos uma conexão TCP aberta e realizamos uma requisição, poderíamos já dar prosseguimento às próximas requisições, isso em paralelo, sem de fato ficar esperando o resultado dela, de maneira assíncrona, e vamos recebendo essas respostas à medida em que o servidor for conseguindo processar.
+
+https://www.alura.com.br/artigos/rest-conceito-e-fundamentos
+
+
